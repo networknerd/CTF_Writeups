@@ -1,4 +1,4 @@
-# AESential Lesson (Crypto 100 points)
+# AESential Lesson (Crypto 465 points)
 
 ![](AES.png)
 

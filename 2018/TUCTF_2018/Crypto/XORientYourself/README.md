@@ -1,4 +1,4 @@
-# XORient Yourself
+# XORient Yourself (Crypto 409 points)
 
 ![](XOR.png)
 

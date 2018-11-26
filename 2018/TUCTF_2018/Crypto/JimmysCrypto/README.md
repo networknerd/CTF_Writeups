@@ -1,4 +1,4 @@
-# Jimmy's Crypto
+# Jimmy's Crypto (Crypto 489 points)
 
 
 ![](Jimmy.png)

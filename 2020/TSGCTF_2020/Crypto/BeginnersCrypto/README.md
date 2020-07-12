@@ -26,7 +26,7 @@ str(f << 10000).endswith('100277387543165836767166582200677108581663105410950917
 
 '<<' is a bitwise operator in python. More information can be found [here](https://wiki.python.org/moin/BitwiseOperators).
 
-$x$ << $y$ is same as $x$ * $2^y$
+x << y is same as x * 2<sup>y</sup>
 
 Let the number in the endswith condition be p.
 
@@ -34,19 +34,19 @@ Let the number in the endswith condition be p.
 p = 1002773875431658367671665822006771085816631054109509173556585546508965236428620487083647585179992085437922318783218149808537210712780660412301729655917441546549321914516504576
 ```
 
-Since $f$ << 10000 (i.e $f$ * $2^{10000}$) ends with p, that means the remainder obtained when dividing ($f$ << 10000) by $10^{175}$ should be equal to $p$(The divisor would be $10^{175}$ because $p$ is a 175 digit number).
+Since f << 10000 (i.e f * 2<sup>10000</sup>) ends with p, that means the remainder obtained when dividing (f << 10000) by 10<sup>175</sup> should be equal to p(The divisor would be 10<sup>175</sup> because p is a 175 digit number).
 
 Now lets represent this mathematically
 
-$p$ $\equiv$ $f$ * $2^{10000}$ $\bmod$($10^{175}$)
+p &equiv; f * 2<sup>10000</sup> mod(10<sup>175</sup>)
 
-But we cannot use modular inverse directly to find $f$ since $2^{10000}$ and $10^{175}$ are not relatively prime.
+But we cannot use modular inverse directly to find f since 2<sup>10000</sup> and 10<sup>175</sup> are not relatively prime.
 
 Lets convert this congruence into a linear equation.
 
-$f$ * $2^{10000}$ = $x$ * $10^{175}$ + $p$
+f * 2<sup>10000</sup> = x * 10<sup>175</sup> + p
 
-Let's try to prime factorise $p$ to see if that helps.
+Let's try to prime factorise p to see if that helps.
 
 Upon querying factordb for the factorization of p, we get
 
@@ -54,15 +54,15 @@ Upon querying factordb for the factorization of p, we get
 p = (2**175) * 61 * 343260582281778161791406870624564462499469137380445678942263498245279735080935957616380366178857319377077244490078139487
 ```
 
-Assuming $y$ = $p$ // $2^{175}$,
+Assuming y = p // 2<sup>175</sup>,
 
-$f$ * $2^{10000}$ = $x$ * $10^{175}$ + $2^{175}$ * $y$
+f * 2<sup>10000</sup> = x * 10<sup>175</sup> + 2<sup>175</sup> * y
 
-This translates to $f$ * $2^{9825}$ = $x$ * $5^{175}$ + $y$
+This translates to f * 2<sup>9825</sup> = x * 5<sup>175</sup> + y
 
-By converting this back into a congruence, we get $y$ $\equiv$ $f$ * $2^{9825}$ $\bmod$($5^{175}$)
+By converting this back into a congruence, we get y &equiv; f * 2<sup>9825</sup> mod(5<sup>175</sup>)
 
-=> $y$ * ($2^{9825}$)<sup>-1</sup> $\equiv$ $f$$\bmod$($5^{175}$)
+=> y * (2<sup>9825</sup>)<sup>-1</sup> &equiv; f mod(5<sup>175</sup>)
 
 We can find the modular inverse using gmpy2.
 
